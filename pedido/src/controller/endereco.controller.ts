@@ -1,15 +1,15 @@
 import { Request, Response } from "express";
 import { getRepository } from "typeorm";
-import { CidadeEntity } from "../entity/cidade.entity";
+import { EnderecoEntity } from "../entity/endereco.entity";
 
-class CidadeController {
+class EnderecoController {
     
     public async findAll(req: Request, res: Response) {
 
         try {
 
-            const cidades: CidadeEntity[] = await getRepository(CidadeEntity).find();
-            res.send(cidades);
+            const enderecos: EnderecoEntity[] = await getRepository(EnderecoEntity).find();
+            res.send(enderecos);
 
         } catch (error) {
             res.status(500).send(error);
@@ -19,12 +19,12 @@ class CidadeController {
 
     public async create(req: Request, res: Response) {
 
-        const cidade = req.body;
+        const endereco = req.body;
 
         try {
 
-            await getRepository(CidadeEntity).save( cidade );
-            res.status(201).send(cidade);
+            await getRepository(EnderecoEntity).save( endereco );
+            res.status(201).send(endereco);
 
         } catch (error) {
             res.status(500).send(error);
@@ -37,11 +37,11 @@ class CidadeController {
 
         try {
             //Buscar o registro pela ID
-            const cidade = await getRepository(CidadeEntity).findOne(id);
+            const endereco = await getRepository(EnderecoEntity).findOne(id);
 
-            //Se não exnotrar uma cidade, devolve erro 404
-            if (cidade) {
-                res.send(cidade);    
+            //Se não exnotrar o endereco, devolve erro 404
+            if (endereco) {
+                res.send(endereco);    
             } else {
                 res.status(404).send({message: 'Record not found'})
             }
@@ -58,15 +58,15 @@ class CidadeController {
 
         try {
             //Buscar o registro pela ID
-            const cidade = await getRepository(CidadeEntity).findOne(id);
+            const endereco = await getRepository(EnderecoEntity).findOne(id);
 
-            //Se não exnotrar uma cidade, devolve erro 404
-            if (cidade) {
+            //Se não encontrar o endereco, devolve erro 404
+            if (endereco) {
                 //Atualizar o registro
-                await getRepository(CidadeEntity).update(cidade.id, novo);
+                await getRepository(EnderecoEntity).update(endereco.id, novo);
 
                 //Atualiza o ID do objeto novo
-                novo.id = cidade.id;
+                novo.id = endereco.id;
                 
                 res.send(novo);
 
@@ -85,12 +85,12 @@ class CidadeController {
 
         try {
             //Buscar o registro pela ID
-            const cidade = await getRepository(CidadeEntity).findOne(id);
+            const endereco = await getRepository(EnderecoEntity).findOne(id);
 
-            //Se não exnotrar uma cidade, devolve erro 404
-            if (cidade) {
+            //Se não exnotrar o endereco, devolve erro 404
+            if (endereco) {
                 //Excluir o registro
-                await getRepository(CidadeEntity).delete(cidade);
+                await getRepository(EnderecoEntity).delete(endereco);
 
                 res.status(204).send();
 
@@ -106,4 +106,4 @@ class CidadeController {
 
 }
 
-export default new CidadeController();
+export default new EnderecoController();

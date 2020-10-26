@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 
-import cidadeRoute from './router/cidade.route'
+import enderecoRoute from './router/endereco.route'
 import clienteRoute from './router/cliente.route'
 import pedidoRoute from './router/pedido.route'
 import produtoRoute from './router/produto.route'
@@ -23,7 +23,7 @@ export class App {
     }
 
     private routes(): void {
-        this.express.use('/cidades', cidadeRoute);
+        this.express.use('/enderecos', enderecoRoute);
         this.express.use('/clientes', clienteRoute);
         this.express.use('/pedidos', pedidoRoute);
         this.express.use('/produtos', produtoRoute);

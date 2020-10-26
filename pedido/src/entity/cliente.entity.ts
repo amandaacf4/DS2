@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { CidadeEntity } from "./cidade.entity";
+import { EnderecoEntity } from "./endereco.entity";
 import { TabelaPrecoEntity } from "./tabelapreco.entity";
 
 @Entity({name: 'cliente'})
@@ -19,6 +19,6 @@ export class ClienteEntity {
     @ManyToOne( type => TabelaPrecoEntity, {eager: true, nullable: true})
     tabelapreco: TabelaPrecoEntity;
 
-    @ManyToOne( type => CidadeEntity, {eager: true, nullable: false})
-    cidade: CidadeEntity;
+    @ManyToOne( type => EnderecoEntity, {eager: true, nullable: false})
+    endereco: EnderecoEntity;
 }
