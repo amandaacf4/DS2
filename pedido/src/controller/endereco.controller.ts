@@ -39,7 +39,7 @@ class EnderecoController {
             //Buscar o registro pela ID
             const endereco = await getRepository(EnderecoEntity).findOne(id);
 
-            //Se não exnotrar o endereco, devolve erro 404
+            //Se não encontrar o endereco, devolve erro 404
             if (endereco) {
                 res.send(endereco);    
             } else {

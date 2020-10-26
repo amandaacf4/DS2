@@ -14,7 +14,7 @@ export class ClienteEntity {
     nome: string;
 
     @Column({nullable: false, length: 50})
-    email: string;
+    telefone: string;
 
     @ManyToOne( type => TabelaPrecoEntity, {eager: true, nullable: true})
     tabelapreco: TabelaPrecoEntity;
